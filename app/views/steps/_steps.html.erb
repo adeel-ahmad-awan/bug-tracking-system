@@ -1,0 +1,38 @@
+<h2>steps to reproduce bugs</h2>
+<br>
+<% count = 1 %>
+<table class="table table-sm stpes-table">
+  <colgroup>
+    <col class="col-md-1">
+    <col class="col-md-10">
+    <col class="col-md-1">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>step num</th>
+      <th>description</th>
+      <% if current_user.id == @bug.user.id %>
+      <th>actions</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bugReproducingSteps.each do |step| %>
+      <tr>
+
+        <td><%= count %></td>
+        <% count+=1 %>
+
+        <% if current_user.id == @bug.user.id %>
+        <td><%= best_in_place step, :body, type: :textarea %></td>
+        <td>
+            <%= link_to 'Delete',step, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        <% else %>
+          <td><%= step.body %></td>
+        <% end %>
+
+       </tr>
+    <% end %>
+  </tbody>
+</table>

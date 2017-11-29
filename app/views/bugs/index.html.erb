@@ -1,0 +1,38 @@
+<h1><%= @project.name %>
+  <div class="sub-heading-size">
+  reported bugs
+  </div>
+</h1>
+
+<p id="notice"><%= notice %></p>
+
+<table class="table table-bordered my-table-dark table-responsive">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>reported_by</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bugs.each do |bug| %>
+      <tr>
+        <td><%= bug.name %></td>
+        <td><%= bug.description %></td>
+        <td>
+          <%= bug.user.first_name %>
+          <%=  bug.user.last_name  %>
+        </td>
+        <td>
+            <%= link_to 'Show', bug_path(bug), class: "btn btn-info btn-xs" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="pull-right">
+  <%= link_to 'back', project_path(@project), class: "btn btn-link btn-xs" %>
+</div>

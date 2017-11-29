@@ -1,0 +1,110 @@
+<h1><%= @project.name %>
+  <div class="sub-heading-size">
+    create by <%= @project.user.first_name %> <%= @project.user.last_name %>
+  </div>
+</h1>
+
+<p id="notice"><%= notice %></p>
+
+<br>
+<div class="container show-container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12 lead">
+              <% if ((current_user.id == @project.user.id) || (current_user.id == @bug.user.id))%>
+
+                <% if @bug.status == "open" %>
+                <div class="statusopen-currentuser pull-right">
+                  <span>OPEN</span>
+                </div>
+                <% else %>
+                <div class="statusclose-currentuser pull-right">
+                  <span>CLOSE</span>
+                </div>
+                <% end %>
+
+              <% else %>
+
+                <% if @bug.status == "open" %>
+                <div class="statusopen pull-right">
+                  <span>OPEN</span>
+                </div>
+                <% else %>
+                <div class="statusclose pull-right">
+                  <span>CLOSE</span>
+                </div>
+                <% end %>
+
+              <% end %>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <h1 class="only-bottom-margin"><%= @bug.name %></h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <span class="text-muted">Reported by:</span> <%= @bug.user.first_name %> <%=  @bug.user.last_name  %><br>
+                  <small class="text-muted">created: <%= @bug.created_at.strftime("%Y-%m-%d") %> </small><br>
+                  <small class="text-muted">updated: <%= @bug.updated_at.strftime("%Y-%m-%d")  %> </small><br>
+                </div>
+                <div class="col-md-6">
+                  <span class="text-muted">Priority: </span> <%= @bug.priority %> <br>
+                  <span class="text-muted">Status: </span> <%= @bug.status %> <br><br>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-12">
+                  <span class="text-muted"></span> <%= simple_format  @bug.description %> <br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <% if current_user.id == @bug.user.id %>
+              <div class="btn-group pull-right ">
+                <%= link_to 'Delete', [@bug], class: "btn btn-danger btn-xs pull-right ", method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Edit', edit_bug_path(@bug), class: "btn-xs btn btn-info pull-right" %>
+                <%= link_to 'Back', project_bugs_path(@bug.project.id), class: "btn-xs btn btn-link pull-right" %>
+              </div>
+              <% elsif current_user.id == @project.user.id %>
+              <div class="btn-group pull-right ">
+                <%= link_to 'Delete', [@bug], class: "btn btn-danger btn-xs pull-right ", method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Back', project_bugs_path(@bug.project.id), class: "btn-xs btn btn-link pull-right" %>
+              </div>
+              <% else %>
+              <%= link_to 'Back', project_bugs_path(@bug.project.id), class: "btn-xs btn btn-link pull-right" %>
+              <% end %>
+              <%= link_to 'View attachments', bug_pictures_path(@bug), class: "btn-xs btn btn-info" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<% if @bug.steps.count > 0 %>
+<div class="row">
+  <hr>
+  <%= render 'steps/steps'%>
+</div>
+
+<% end %>
+
+  <% if current_user.id == @bug.user.id %>
+    <%= render 'steps/form'%>
+  <% end %>
+
+</div>

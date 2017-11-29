@@ -1,0 +1,49 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to 'Bug Tracker', projects_path, :class => 'navbar-brand' %>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><%= link_to 'MyProjects', projects_path %></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-right-font">
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to 'Profile', edit_user_registration_path, :class => 'glyphicon glyphicon-fire' %>
+      </li>
+      <li>
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'glyphicon glyphicon-log-out'  %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to 'Login', new_user_session_path, :class => 'glyphicon glyphicon-log-in'%>
+      </li>
+      <li>
+        <%= link_to 'SignUp', new_user_registration_path, :class => 'glyphicon glyphicon-user'%>
+      </li>
+    <% end %>
+      <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+    </ul>
+  </div>
+</nav>
+
+<!-- <div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Bts</a>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Link1", "/path1"  %></li>
+        <li><%= link_to "Link2", "/path2"  %></li>
+        <li><%= link_to "Link3", "/path3"  %></li>
+      </ul>
+    </div>
+  </div>
+</div> -->

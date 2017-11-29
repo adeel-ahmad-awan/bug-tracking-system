@@ -1,0 +1,23 @@
+
+<%= form_for ([@bug, @bug.pictures.build]), html: { multipart: true } do |f| %>
+
+<div class="form-group">
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control", rows: "2", placeholder: "add image description for clearity"%>
+</div>
+
+<div class="form-group">
+  <label class="btn btn-primary">
+    Add an image!
+    <span style="display:none;">
+      <%= f.label :snapshot %>
+      <%= f.file_field :image %>
+      </span>
+    </label>
+</div>
+
+<div class="actions form-group pull-right">
+  <%= f.submit class: 'btn btn-default', value: 'upload attachment' %>
+</div>
+
+<% end %>

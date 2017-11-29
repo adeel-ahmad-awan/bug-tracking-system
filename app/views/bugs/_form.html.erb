@@ -1,0 +1,35 @@
+<%= form_for ([@bug]), html: { multipart: true } do |f| %>
+
+<% if @bug.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@bug.errors.count, "error") %> prohibited this bug from being saved:</h2>
+
+    <ul>
+    <% @bug.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="form-group">
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control", placeholder: "short name for explaining bug"  %>
+</div>
+
+<div class="form-group">
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control", rows: "5" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :priority %>
+  <%= f.text_field :priority, class: "form-control" %>
+</div>
+
+
+<div class="actions form-group pull-right">
+  <%= f.submit class: "btn btn-default" %>
+</div>
+
+<% end %>

@@ -1,0 +1,29 @@
+<!-- source = https://bootsnipp.com/snippets/6X607 -->
+<div class="newpictureformrendering">
+  <%= render :partial => 'form' %>
+</div>
+
+
+<section>
+  <div class="container gal-container">
+    <% @allpictures.each do |pic| %>
+
+    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+      <div class="box">
+        <!--image tag-->
+        <a href="#" data-toggle="modal" data-target="#2">
+          <!-- <img src="https://cdn.athemes.com/wp-content/uploads/Original-JPG-Image.jpg"> -->
+          <%= image_tag pic.image.url(:medium), class: "avatar avatar-original", style: "-webkit-user-select:none; display:block; margin:auto;" %>
+        </a>
+        <!--end image tag-->
+      </div>
+      <div class="centered"><%= pic.description %></div>
+      <div class="top-right">
+        <%= link_to 'Delete', [pic], class: "btn btn-danger btn-xs pull-right ", method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+
+    </div>
+
+    <% end %>
+  </div>
+</section>

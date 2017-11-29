@@ -1,0 +1,87 @@
+.no-padding {
+  padding: 0 !important;
+}
+
+.left-padding {
+  padding-left: 15px !important;
+}
+
+.navbar-right-font{
+  font-size: 125%;
+}
+
+.navigation-padding{
+   padding-top: 70px;
+}
+
+.input-group.md-form.form-sm.form-2 input {
+    border: 1px solid #bdbdbd;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+.input-group.md-form.form-sm.form-2 input.grey-border  {
+    border: 1px solid #e9ecef;
+}
+.input-group input[type=text]:focus:not([readonly]) {
+    box-shadow: none;
+}
+.form-2 .input-group-addon {
+    border: 1px solid #e9ecef;
+}
+
+.my-table-dark{
+  // background-color: #373a3c;
+  background-color: #142033;
+  color: #fff;
+
+}
+
+.sub-heading-size{
+  font-size:medium;
+  text-decoration: underline;
+}
+
+.only-bottom-margin {
+  margin-top: 0px;
+}
+
+.activity-mini {
+  padding-right: 15px;
+  float: left;
+}
+
+
+.statusopen{}
+.statusopen span {
+  border-radius: 15px;
+  background: #76C773;
+  padding: 7px;}
+
+.statusclose{}
+.statusclose span{
+  border-radius: 15px;
+  background: #DC4848;
+  padding: 7px;
+
+}
+
+.statusopen-currentuser{}
+.statusopen-currentuser span {
+  border-radius: 15px;
+  background: #76C773;
+  padding: 7px;
+  border-style: solid;
+  border-color: #005409;
+}
+
+.statusclose-currentuser{}
+.statusclose-currentuser span {
+  border-radius: 15px;
+  background: #DC4848;
+  padding: 7px;
+}
+
+.stpes-table th{
+  background-color: #142033;
+  color: #fff;
+}
